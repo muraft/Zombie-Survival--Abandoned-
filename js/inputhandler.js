@@ -35,4 +35,16 @@ function pressed(key)
 		leftButton=true;
 		break;
 	}
+	blink(key);
+}
+
+function blink(key)
+{
+	const KEY=document.getElementById(key).style;
+	KEY.color="black";
+	KEY.backgroundColor="white";
+	setTimeout(()=>{
+		KEY.color="white";
+		KEY.backgroundColor="black";
+	},200)
 }
