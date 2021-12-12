@@ -1,8 +1,8 @@
 class create
 {
-	constructor(name)
+	constructor(name,x,y,width,height)
 	{
-		units(name,this);
+		objects(name,this,x,y,width,height);
 		this.up=true;
 		this.right=true;
 		this.down=true;
@@ -31,6 +31,10 @@ class create
 			this.left=false;
 		}
 	}
+	update()
+	{
+		this.x+=this.speed;
+	}
 	control()
 	{
 		if(upButton==true && this.up)
@@ -54,10 +58,22 @@ class create
 	}
 	draw()
 	{
-		ctx.drawImage(this.image,this.x,this.y,this.width,this.height)
+		if(this.image!=undefined)
+		{
+			ctx.drawImage(this.image,this.x,this.y,this.width,this.height)
+		}
+		else
+		{
+			ctx.fillStyle=this.color;
+			ctx.fillRect(this.x,this.y,this.width,this.height)
+		}
 	}
 	shoot()
 	{
-		
+		if(shootButton==true)
+		{
+			bullet.push(new create('bullet',this.x,this.y,this.width,this.height))
+			shootButton=false;
+		}
 	}
 }
