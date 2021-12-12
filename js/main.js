@@ -7,6 +7,8 @@ function game()
   player.checkCollision();
   player.control();
   player.draw();
+  player.shoot();
+  allBullet();
   requestAnimationFrame(game)
 }
 game();
@@ -16,4 +18,9 @@ function drawBg()
 	mapImage= new Image();
 	mapImage.src='image/bg.jpg';
 	ctx.drawImage(mapImage,0,0,canvas.width,canvas.height)
+}
+
+function allBullet()
+{
+	bullet.forEach(v=>{v.draw();v.update()})
 }
