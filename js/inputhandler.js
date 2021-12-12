@@ -1,20 +1,23 @@
-let upButton=false,rightButton=false,downButton=false,leftButton=false;
+let upButton=false,rightButton=false,downButton=false,leftButton=false,shootButton=false;
 
 window.addEventListener('keydown',e=>{
-    switch (e.key)
+    switch (e.which)
 	{
-        case 'ArrowLeft':
+        case 37:
         pressed("left")
         break;
-        case 'ArrowRight':
+        case 39:
         pressed("right")
         break;
-        case 'ArrowUp':
+        case 38:
         pressed("up")
         break;
-        case 'ArrowDown':
+        case 40:
         pressed("down")
         break;
+		case 32: //spacebar
+		pressed("shoot")
+		break;
 	}
     })
 
@@ -33,6 +36,9 @@ function pressed(key)
 		break;
 		case "left":
 		leftButton=true;
+		break;
+		case "shoot":
+		shootButton=true;
 		break;
 	}
 	blink(key);
